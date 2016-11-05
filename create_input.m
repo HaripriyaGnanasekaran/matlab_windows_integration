@@ -19,6 +19,8 @@ for i = 1:n
      variable(i) = initial_value + step*(i-1);
 end
 
+
+
 for j = 1:n
     fprintf('Creating input file %d\n',j);
 
