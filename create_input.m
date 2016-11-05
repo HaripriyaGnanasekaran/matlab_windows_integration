@@ -163,8 +163,9 @@ disp('Hurrrrayyy! You can Start running the inputs. :) ')
 
 
 for i = 1:n
-filename = sprintf('input_%d.dat',i);
-string = sprintf('!sfbox.exe %s', filename);
-eval(string)
+     filename = sprintf('input_%d.dat',i);
+     string = sprintf('!sfbox.exe %s', filename);
+     eval(string)
 end
+
 
