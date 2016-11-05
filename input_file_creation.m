@@ -5,8 +5,10 @@ clear all;
 close all;
 clc;
 
+
+for i = 1:2
 % Reading the user created file name
-filename = input('Enter the name of the input file : ','s');
+filename = sprintf('input_%d.dat',i);
 file = fopen(filename,'w');
 
 % Generating Grid
@@ -189,10 +191,10 @@ if(super_iteration == 1)
 end
 
 
-fread = fileread('test.in');
-fopen('newfile.in','w');
-dlmwrite('newfile.in',fread,'delimiter','');
+% fread = fileread('test.in');
+% fopen('newfile.in','w');
+% dlmwrite('newfile.in',fread,'delimiter','');
 
-
+end
 
 

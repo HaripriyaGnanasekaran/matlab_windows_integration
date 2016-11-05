@@ -1,0 +1,35 @@
+lat : ram : n_layers : 100
+lat : ram : lambda : 0.1666666666666667
+lat : ram : geometry : flat
+lat : ram : gradients : 1
+lat : ram : lowerbound : mirror1
+lat : ram : upperbound : mirror1
+
+mon : A : freedom : pinned
+mon : A : pinned_range : 1;60
+mon : A : chi - B : 0.6000
+mon : B : freedom : free
+
+mol : A : composition : (A)4
+mol : A : freedom : restricted
+mol : A : theta : 50
+mol : B : composition : (B)4
+mol : B : freedom : solvent
+mol : surf : composition : (A)20(B)20
+mol : surf : freedom : restricted
+mol : surf : theta : 1.000000e-01
+
+start
+mon : A : freedom : free
+
+newton : isaac : method : pseudohessian
+newton : isaac : tolerance : 1e-10
+newton : isaac : e_info : false
+newton : isaac : s_info : true
+
+
+sys : ram : super_iteration : true
+sys : ram : super_molecule : surf
+sys : ram : super_function : grand_potential
+sys : ram : super_function_value : 0.0000000000000000
+
