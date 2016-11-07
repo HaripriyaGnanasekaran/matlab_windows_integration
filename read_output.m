@@ -19,6 +19,8 @@ end
 
 for i = 1:n
      figure(i);
+     fig = figure(i);
+     plotname = sprintf('profile_%d',i);
      plot (layers(:,i),phi_A(:,i),layers(:,i),phi_B(:,i),...
          layers(:,i),phi_p(:,i),...
          layers(:,i),phi_pa(:,i),...
@@ -26,4 +28,5 @@ for i = 1:n
      xlabel('x')
      ylabel('\phi')
      legend('\phi_A','\phi_B','\phi_S','\phi_{SA}','\phi_{SB}');
+     print(fig,plotname,'-dpng')
 end

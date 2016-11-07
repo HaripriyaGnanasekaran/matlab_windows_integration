@@ -17,9 +17,9 @@ clc;
 system('rm input*.*');
 
 
-initial_value = 4;	% Initial value of the variable to be changed 
+initial_value = 20;	% Initial value of the variable to be changed 
 step = 1; 		% steps in which inital value is to be changed
-end_value = 50;		% End value of the variable to be changed 
+end_value = 100;		% End value of the variable to be changed 
 disp('Computing number of files to be created');
 n = ((end_value-initial_value)/step + 1);
 disp('Creating an array of variable values');

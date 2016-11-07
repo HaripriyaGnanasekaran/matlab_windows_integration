@@ -1,0 +1,39 @@
+lat : flat : n_layers : 300
+lat : flat : lambda : 0.1666666666666667
+lat : flat : geometry : flat
+lat : flat : gradients : 1
+lat : flat : lowerbound : mirror1
+lat : flat : upperbound : mirror1
+
+mon : A : freedom : pinned
+mon : A : pinned_range : 1;160
+mon : A : chi - B : 0.6000000000000000
+mon : B : freedom : free
+
+mol : A : composition : (A)4
+mol : A : freedom : restricted
+mol : A : theta : 150
+mol : B : composition : (B)4
+mol : B : freedom : solvent
+mol : pol : composition : (A)30(B)30
+mol : pol : freedom : restricted
+mol : pol : theta : 1.000000e-01
+
+start
+mon : A : freedom : free
+
+newton : isaac : method : pseudohessian
+newton : isaac : tolerance : 1e-10
+newton : isaac : e_info : false
+newton : isaac : s_info : true
+
+output : filename.pro : type : profiles
+output : filename.pro : template : temp.pro
+output : filename.pro : write_bounds : false
+output : filename.kal : type : kal
+output : filename.kal : template : temp.kal
+
+sys : flat : super_iteration : true
+sys : flat : super_molecule : pol
+sys : flat : super_function : grand_potential
+sys : flat : super_function_value : 0.0000000000000000
