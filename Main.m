@@ -6,4 +6,4 @@
 
 create_input;
 run_input;
-%read_output;
+read_output;
