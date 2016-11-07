@@ -8,7 +8,7 @@ close all;
 clc
 
 
-initial_value = 4;	% Initial value of the variable to be changed in the input file
+initial_value = 4;	% Initial value of the variable to be changed 
 step = 2; 		% steps in which inital value is to be changed
 end_value = 8;		% End value of the variable to be changed 
 disp('Computing number of files to be created');
@@ -24,7 +24,7 @@ end
 for j = 1:n
     fprintf('Creating input file %d\n',j);
 
-    % Several input files with name input_(index).dat will be created for every loop
+    % Several input files with name input_(index).dat will be created 
     filename = sprintf('input_%d.dat',j);
     file = fopen(filename,'w');
 
@@ -68,7 +68,8 @@ for j = 1:n
     formatSpec_freedom = 'mon : %s : freedom : %s\r\n';
     fprintf(file, formatSpec_freedom, mon_name, freedom);
     formatSpec_pin_range = 'mon : %s : pinned_range : %d;%d\r\n';
-    fprintf(file, formatSpec_pin_range, mon_name, pinned_rangefrom, pinned_rangeto);
+    fprintf(file, formatSpec_pin_range, mon_name, pinned_rangefrom,...
+        pinned_rangeto);
     formatSpec_freedom = 'mon : %s : chi - %s : %.16f\r\n';
     fprintf(file, formatSpec_freedom, mon_name, int_with, chival);    
     % 2nd monomer parameters
@@ -111,7 +112,8 @@ for j = 1:n
         formatSpec_comp = 'mol : %s : composition : (%s)%d(%s)%d\r\n';
         formatSpec_freedom = 'mol : %s : freedom : %s\r\n';
         formatSpec_th = 'mol : %s : theta : %d\r\n';
-        fprintf(file, formatSpec_comp, surf_name, mol_name1, compos1, mol_name2, compos2);
+        fprintf(file, formatSpec_comp, surf_name, mol_name1, compos1, ...
+            mol_name2, compos2);
         fprintf(file, formatSpec_freedom, surf_name, freedom);
         fprintf(file, formatSpec_th, surf_name, theta);
 
@@ -160,12 +162,12 @@ disp('Succesfully created all input files');
 disp('Hurrrrayyy! You can Start running the inputs. :) ')
 
 
-
-
-for i = 1:n
+distcomp.feature( 'LocalUseMpiexec', false);
+parpool ('local',n);
+parfor i = 1:n
      filename = sprintf('input_%d.dat',i);
-     string = sprintf('!sfbox.exe %s', filename);
-     eval(string)
+     string = sprintf('sfbox.exe %s', filename);
+     system(string);
 end
 
 
