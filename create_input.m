@@ -7,14 +7,16 @@ clear all;
 close all;
 clc
 
+system('rm input*.*');
 
 initial_value = 4;	% Initial value of the variable to be changed 
-step = 2; 		% steps in which inital value is to be changed
-end_value = 8;		% End value of the variable to be changed 
+step = 1; 		% steps in which inital value is to be changed
+end_value = 50;		% End value of the variable to be changed 
 disp('Computing number of files to be created');
 n = ((end_value-initial_value)/step + 1);
 disp('Creating an array of variable values');
 
+variable(n)=0;
 for i = 1:n
      variable(i) = initial_value + step*(i-1);
 end
@@ -31,7 +33,7 @@ for j = 1:n
     % Generating Grid
     % grid parameters
     gridname = 'flat';
-    n_layers = 100;
+    n_layers = 300;
     geometry = 'flat';
     lambda = 1/6;
     gradients = 1;
@@ -61,7 +63,7 @@ for j = 1:n
     mon_name = 'A';
     freedom = 'pinned';
     pinned_rangefrom = 1;
-    pinned_rangeto = 60;
+    pinned_rangeto = 160;
     int_with = 'B';
     chival = 0.6;
     % writing in file
@@ -84,9 +86,9 @@ for j = 1:n
     % Creating Molecules from monomers
     % Creating 1st Molecule
         mol_name1 = 'A'; 
-        composition = variable(j);
+        composition = 4;
         freedom = 'restricted';
-        theta = 50;
+        theta = 150;
         %writing in file
         formatSpec_comp = 'mol : %s : composition : (%s)%d\r\n';
         formatSpec_freedom = 'mol : %s : freedom : %s\r\n';
@@ -96,7 +98,7 @@ for j = 1:n
         fprintf(file, formatSpec_th, mol_name1, theta);
     % Creating 2nd Molecule
         mol_name2 = 'B'; 
-        composition = variable(j);
+        composition = 4;
         freedom = 'solvent';
         %writing in file
         fprintf(file, formatSpec_comp, mol_name2, mol_name2, composition);
@@ -104,8 +106,8 @@ for j = 1:n
         
     % Creating Polymer Molecule
         surf_name = 'pol'; 
-        compos1 = 20;
-        compos2 = 20;
+        compos1 = variable(j);
+        compos2 = variable(j);
         freedom = 'restricted';
         theta = 0.1;
         %writing in file
