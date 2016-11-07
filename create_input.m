@@ -162,12 +162,7 @@ disp('Succesfully created all input files');
 disp('Hurrrrayyy! You can Start running the inputs. :) ')
 
 
-distcomp.feature( 'LocalUseMpiexec', false);
-parpool ('local',n);
-parfor i = 1:n
-     filename = sprintf('input_%d.dat',i);
-     string = sprintf('sfbox.exe %s', filename);
-     system(string);
-end
+
+
 
 
