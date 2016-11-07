@@ -1,13 +1,21 @@
 % Input generator for flat geometery and varying a specific parameter
-% Created by Ramanathan 
+% developed by Ram
+
+% ==================================================================
+% Recent edits log
 % ------------------------------------------------------------------
+% Name	|	Description				| Date
+% ------------------------------------------------------------------
+% Ram	| creates input for flat geometry only.		| 6,Nov,2016
+% Ram	| Varies surfactant chain length from 4 - 50, 
+%	  and number of layers increased to 300. 	| 7,Nov,16
+%===================================================================
 
 
-clear all;
 close all;
-clc
-
+clc;
 system('rm input*.*');
+
 
 initial_value = 4;	% Initial value of the variable to be changed 
 step = 1; 		% steps in which inital value is to be changed
