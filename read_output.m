@@ -2,6 +2,14 @@
 % Contains functions to plot data and analyse data.
 
 
+%pre-allocation for fast processing of arrays
+% layers = zeros(n_layers,n);
+% phi_A = zeros(n_layers,n);
+% phi_B = zeros(n_layers,n);
+% phi_p = zeros(n_layers,n);
+% phi_pa = zeros(n_layers,n);
+% phi_pb = zeros(n_layers,n);
+
 for i = 1:n
      filename = sprintf('input_%d_2.pro',i);
      M = dlmread(filename,'\t',1,0);
@@ -14,10 +22,10 @@ for i = 1:n
 end
 
 
-
 % plotting profiles
 
 for i = 1:n
+     
      figure(i);
      fig = figure(i);
      plotname = sprintf('profile_%d',i);
@@ -29,4 +37,6 @@ for i = 1:n
      ylabel('\phi')
      legend('\phi_A','\phi_B','\phi_S','\phi_{SA}','\phi_{SB}');
      print(fig,plotname,'-dpng')
+     
 end
+

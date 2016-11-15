@@ -15,7 +15,7 @@ mol : A : freedom : restricted
 mol : A : theta : 150
 mol : B : composition : (B)4
 mol : B : freedom : solvent
-mol : pol : composition : (A)22(B)22
+mol : pol : composition : (A)18(B)18
 mol : pol : freedom : restricted
 mol : pol : theta : 1.000000e-01
 
