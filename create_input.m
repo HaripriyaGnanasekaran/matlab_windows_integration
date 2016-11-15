@@ -6,9 +6,9 @@
 % ------------------------------------------------------------------
 % Name	|	Description				| Date
 % ------------------------------------------------------------------
-% Ram	| creates input for flat geometry only.		| 6,Nov,2016
-% Ram	| Varies surfactant chain length from 4 - 50, 
-%	  and number of layers increased to 300. 	| 7,Nov,16
+% Ram	| creates input for flat geometry only.		|06,Nov,2016
+% Ram	| Varies surfactant chain length from 16 - 20, 
+%	  and number of layers increased to 300. 	|14,Nov,2016
 %===================================================================
 
 
@@ -17,9 +17,9 @@ clc;
 system('rm input*.*');
 
 
-initial_value = 20;	% Initial value of the variable to be changed 
+initial_value = 16;	% Initial value of the variable to be changed 
 step = 1; 		% steps in which inital value is to be changed
-end_value = 100;		% End value of the variable to be changed 
+end_value = 20;		% End value of the variable to be changed 
 disp('Computing number of files to be created');
 n = ((end_value-initial_value)/step + 1);
 disp('Creating an array of variable values');
