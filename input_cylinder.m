@@ -8,7 +8,7 @@
 % ------------------------------------------------------------------
 % Ram	| creates input for flat geometry only.		|06,Nov,2016
 % Ram	| Varies surfactant chain length from 16 - 20, 
-%	  and number of layers increased to 300. 	|14,Nov,2016
+%	  and number of layers increased to 100. 	|16,Nov,2016
 %===================================================================
 
 
