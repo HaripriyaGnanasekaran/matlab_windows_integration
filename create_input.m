@@ -14,7 +14,7 @@
 
 close all;
 clc;
-system('rm input*.*');
+
 
 
 initial_value = 16;	% Initial value of the variable to be changed 
@@ -41,7 +41,7 @@ for j = 1:n
     % Generating Grid
     % grid parameters
     gridname = 'flat';
-    n_layers = 300;
+    n_layers = 100;
     geometry = 'flat';
     lambda = 1/6;
     gradients = 1;
@@ -71,7 +71,7 @@ for j = 1:n
     mon_name = 'A';
     freedom = 'pinned';
     pinned_rangefrom = 1;
-    pinned_rangeto = 160;
+    pinned_rangeto = 60;
     int_with = 'B';
     chival = 0.6;
     % writing in file
@@ -96,7 +96,7 @@ for j = 1:n
         mol_name1 = 'A'; 
         composition = 4;
         freedom = 'restricted';
-        theta = 150;
+        theta = 50;
         %writing in file
         formatSpec_comp = 'mol : %s : composition : (%s)%d\r\n';
         formatSpec_freedom = 'mol : %s : freedom : %s\r\n';

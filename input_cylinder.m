@@ -1,4 +1,4 @@
-% Input generator for cylindrical geometery and varying a specific parameter
+% Input generator for flat geometery and varying a specific parameter
 % developed by Ram
 
 % ==================================================================
@@ -6,7 +6,7 @@
 % ------------------------------------------------------------------
 % Name	|	Description				| Date
 % ------------------------------------------------------------------
-% Ram	| creates input for cylindrical geometry only.	|06,Nov,2016
+% Ram	| creates input for flat geometry only.		|06,Nov,2016
 % Ram	| Varies surfactant chain length from 16 - 20, 
 %	  and number of layers increased to 300. 	|14,Nov,2016
 %===================================================================
@@ -14,7 +14,7 @@
 
 close all;
 clc;
-system('rm input*.*');
+
 
 
 initial_value = 16;	% Initial value of the variable to be changed 
@@ -71,7 +71,7 @@ for j = 1:n
     mon_name = 'A';
     freedom = 'pinned';
     pinned_rangefrom = 1;
-    pinned_rangeto = 70;
+    pinned_rangeto = 60;
     int_with = 'B';
     chival = 0.6;
     % writing in file
@@ -96,7 +96,7 @@ for j = 1:n
         mol_name1 = 'A'; 
         composition = 4;
         freedom = 'restricted';
-        theta = 10542; 							% HOW IS THE VALUE OF THETA COMPUTED FOR CYLINDRICAL CASE?
+        theta = 10542;
         %writing in file
         formatSpec_comp = 'mol : %s : composition : (%s)%d\r\n';
         formatSpec_freedom = 'mol : %s : freedom : %s\r\n';
@@ -117,7 +117,7 @@ for j = 1:n
         compos1 = variable(j);
         compos2 = variable(j);
         freedom = 'restricted';
-        theta = 675;						     % How to obtain this value again
+        theta = 675;
         %writing in file
         formatSpec_comp = 'mol : %s : composition : (%s)%d(%s)%d\r\n';
         formatSpec_freedom = 'mol : %s : freedom : %s\r\n';
@@ -130,6 +130,10 @@ for j = 1:n
     fprintf(file,'\r\n');
     fprintf(file,'start\r\n');
     fprintf(file,'mon : A : freedom : free\r\n');
+    fprintf(file,'\r\n');
+    
+    fprintf(file,'sys : cylinder : extra_output : interfacial_width \r\n');
+    fprintf(file,'sys : cylinder : Gibbs_molecule : B \r\n');
     fprintf(file,'\r\n');
 
     % writing the iteration techniques to file
@@ -145,24 +149,9 @@ for j = 1:n
     fprintf(file, 'output : filename.kal : type : kal\r\n');
     fprintf(file, 'output : filename.kal : template : temp.kal\r\n');
     fprintf(file,'\r\n');
-    % writing super iteration format
-%        name = 'pol';
-%        parameter = 'grand_potential';
-%        value = 0.0;
-
-%        formatSpec_si = 'sys : %s : super_iteration : true\r\n';
-%        formatSpec_sm = 'sys : %s : super_molecule : %s\r\n';
-%        formatSpec_sf = 'sys : %s : super_function : %s\r\n';
-%        formatSpec_sfv = 'sys : %s : super_function_value : %.16f\r\n';
-
-%        fprintf(file,formatSpec_si, gridname);
-%        fprintf(file,formatSpec_sm, gridname, name);
-%        fprintf(file,formatSpec_sf, gridname, parameter);
-%        fprintf(file,formatSpec_sfv, gridname, value);
-
     
-end
 
+end
 disp('Succesfully created all input files');
 disp('Hurrrrayyy! You can Start running the inputs. :) ')
 
